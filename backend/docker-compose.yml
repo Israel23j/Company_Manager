@@ -10,7 +10,12 @@ services:
     container_name: database
     image: postgres
     environment:
+      POSTGRES_DB: pruebas
       POSTGRES_PASSWORD: password
+    volumes:
+      - "./volumes_postgres:/var/lib/postgresql/data"
+      - "./postgres_database/prueba.sql:/docker-entrypoint-initdb.d/prueba.sql"
+      - "./postgres_database/data_prueba.sql:/docker-entrypoint-initdb.d/data_prueba.sql"
     ports:
       - '5432:5432'
     
