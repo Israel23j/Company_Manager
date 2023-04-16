@@ -7,9 +7,9 @@ def conn_database():
 
     try:
 
-        conn = psycopg2.connect(host="database", database="pruebas", user="postgres", password="password")
+        conn = psycopg2.connect(host="database", database="test", user="postgres", password="password")
         cursor = conn.cursor()
-        cursor.execute("SELECT name FROM data;")
+        cursor.execute("SELECT * FROM datos;")
         result = cursor.fetchone()
 
     except:
