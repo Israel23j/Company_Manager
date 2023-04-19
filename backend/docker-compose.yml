@@ -19,12 +19,6 @@ services:
     ports:
       - '5432:5432'
 
-  frontend:
-    container_name: frontend
-    image: frontend
-    volumes:
-      - "../frontend/code:/var/www/html"
-    ports: 
-      - '9090:80'
+
 
     
