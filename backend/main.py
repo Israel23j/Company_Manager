@@ -20,19 +20,18 @@ def conn_database():
 
 @app.get('/')
 def message():
-    #return {query_database('pruebas','postgres','password','localhost','5432')}
+
     return {"message":"Hola Isra"}
-    #return conn_database()
     
 @app.get('/products')
 def message_2():
-    #return f"Product: {product_id}"
+
     return conn_database()
 
 @app.get('/products/{product_id}')
 def message_2(product_id: int):
     return f"Product: {product_id}"
-    #return conn_database()
+    
 
 
 @app.post('/products')
