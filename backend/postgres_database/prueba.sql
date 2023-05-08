@@ -103,15 +103,15 @@ INSERT INTO providers ("name",cif,direction,phone,email,contact,schedule) VALUES
 
 INSERT INTO products VALUES (123456, 1, 'PowerStore', 324.76);
 INSERT INTO products VALUES (987654, 2, 'PowerMax', 394.32);
-INSERT INTO products VALUES (135790, 3, 'DataDomain', 678,61);
+INSERT INTO products VALUES (135790, 3, 'DataDomain', 678.61);
 
 INSERT INTO details_expense (id_order, code_product, quantity) VALUES (1,123456,5);
 INSERT INTO details_expense (id_order, code_product, quantity) VALUES (1,123456,3);
 INSERT INTO details_expense (id_order, code_product, quantity) VALUES (2,987654,1);
 INSERT INTO details_expense (id_order, code_product, quantity) VALUES (2,123456,5);
 
-SELECT * FROM providers;
+/*SELECT * FROM providers;
 SELECT * FROM products;
 SELECT * FROM details_expense;
 SELECT * FROM expenses;
-SELECT SUM(quantity) AS quantity,SUM(price_without_iva) AS total_price FROM details_expense WHERE id_order = 1;
+SELECT SUM(quantity) AS quantity,SUM(price_without_iva) AS total_price FROM details_expense WHERE id_order = 1;*/
