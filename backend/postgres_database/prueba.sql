@@ -30,9 +30,7 @@ CREATE TABLE  IF NOT EXISTS products (code_product INT,
 
 CREATE TABLE IF NOT EXISTS income (id_order INT,
                                    id_client INT, 
-                                   quantity INT, 
                                    "date" DATE, 
-                                   price_without_IVA FLOAT,
                                    PRIMARY KEY(id_order),
                                    CONSTRAINT fk_order_client
                                    FOREIGN KEY(id_client)
@@ -49,10 +47,7 @@ CREATE TABLE  IF NOT EXISTS details_income (id_order INT,
 
 CREATE TABLE IF NOT EXISTS expenses (id_order INT, 
                                      id_provider INT,
-                                     id_product INT,
-                                     quantity INT,
                                      "date" DATE,
-                                     price_without_IVA FLOAT,
                                      PRIMARY KEY(id_order),
                                      CONSTRAINT fk_order_provider
                                      FOREIGN KEY(id_provider)
