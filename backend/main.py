@@ -1,16 +1,16 @@
-from fastapi import FastAPI
+from fastapi import FastAPI,Depends
+from connection import get_db
 from connection.db_connect import *
 
 app = FastAPI()
 app.title = "Company Manager API"
-conn = Connection_database()
 
 
 
 @app.get('/')
-def message():
+def message(db=Depends(get_db)):
     
-    data = conn.read_all("providers")
+    data = db.read_all("providers")
     
     items = {}
 
@@ -30,16 +30,17 @@ def message():
 
     
 @app.get('/products', tags=["Products"])
-def message_2():
+def message_2(
+      db=Depends(get_db)
+):
 
-    data = conn.read_all("products")
+    data = db.read_all("products")
 
     items = {}
 
     for row in data:
 
         products = {}
-        products['Code_product'] = row[0]
         products['ID_provider'] = row[1]
         products['name'] = row[2]
         products['price_without_iva'] = row[3]
@@ -49,10 +50,10 @@ def message_2():
 
 
 @app.get('/products/{code_product}', tags=["Products"])
-def message_2(code_product: int):
+def message_2(code_product: int,  db=Depends(get_db)):
     
 
-    data = conn.read_one("products","code_product",code_product)
+    data = db.read_one("products","code_product",code_product)
     
     product = {}
     item = {}
@@ -65,9 +66,9 @@ def message_2(code_product: int):
     return product
 
 @app.get('/providers', tags=["Providers"])
-def get_providers():
+def get_providers(  db=Depends(get_db)):
     
-    data = conn.read_all("providers")
+    data = db.read_all("providers")
 
     items = {}
 
@@ -83,9 +84,9 @@ def get_providers():
     return items
 
 @app.get('/providers/{id_provider}', tags=["Providers"])
-def get_only_provider(id_provider:int):
+def get_only_provider(id_provider:int,  db=Depends(get_db)):
     
-    data = conn.read_one("providers","id_provider",id_provider)
+    data = db.read_one("providers","id_provider",id_provider)
     item = {}
     provider = {}
     provider["name"] = data[1]
@@ -100,9 +101,9 @@ def get_only_provider(id_provider:int):
     return item
 
 @app.get('/clients', tags=["clients"])
-def get_clients():
+def get_clients(  db=Depends(get_db)):
     
-    data = conn.read_all("clients")
+    data = db.read_all("clients")
 
     items = {}
 
@@ -138,9 +139,9 @@ def get_only_client(id_client:int):
     return item
 
 @app.get('/expenses', tags=["Expenses"])
-def get_all_expense():
+def get_all_expense(  db=Depends(get_db)):
     
-    data = conn.read_all("expenses")
+    data = db.read_all("expenses")
 
     items = []
 
@@ -156,9 +157,9 @@ def get_all_expense():
     return items
 
 @app.get('/expenses/{id_order}', tags=["Expenses"])
-def get_only_expense(id_order:int):
+def get_only_expense(id_order:int,  db=Depends(get_db)):
     
-    data = conn.read_one("expenses","id_order",id_order)
+    data = db.read_one("expenses","id_order",id_order)
     item = {}
     expense = {}
     expense["ID_client"] = data[1]
@@ -168,9 +169,9 @@ def get_only_expense(id_order:int):
     return item
 
 @app.get('/income', tags=["Income"])
-def list_expense():
+def list_expense(  db=Depends(get_db)):
     
-    data = conn.read_all("income")
+    data = db.read_all("income")
     
     items = {}
 
@@ -186,9 +187,9 @@ def list_expense():
     return items
 
 @app.get('/income/{id_order}', tags=["Income"])
-def list_id_expense(id_order:int):
+def list_id_expense(id_order:int,  db=Depends(get_db)):
 
-    data = conn.read_one("income","id_order",id_order)
+    data = db.read_one("income","id_order",id_order)
     item = {}
     order = {}
     order["ID_client"] = data[1]
@@ -201,10 +202,10 @@ def list_id_expense(id_order:int):
 ########## INSERT ##########
 
 @app.post('/products/insert', tags=["Products"])
-def look_product():
-    conn.write_customers("clients(name,cif,direction,phone,email,contact,schedule)","'romero company','96745673A','d',132476890,'a@a','pepe','09:00-18:00'")
+def look_product(  db=Depends(get_db)):
+    db.write_customers("clients(name,cif,direction,phone,email,contact,schedule)","'romero company','96745673A','d',132476890,'a@a','pepe','09:00-18:00'")
     
 
 @app.post('/products/insert')
-def insert_product():
-    conn.write_products()
+def insert_product(  db=Depends(get_db)):
+    db.write_products()

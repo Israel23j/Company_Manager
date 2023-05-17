@@ -2,18 +2,14 @@ import psycopg2
 
 class Connection_database():
 
-    conn = None
+    
 
     def __init__(self):
 
         try:
-            
             self.conn = psycopg2.connect(host="database", database="test", user="postgres", password="password")
-        
         except:
-            
             print("Error de conexión")
-            self.conn.close()
 
     def read_all(self,tb_name):
 
