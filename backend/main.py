@@ -143,16 +143,14 @@ def get_all_expense(  db=Depends(get_db)):
     
     data = db.read_all("expenses")
 
-    items = []
+    items = {}
 
     for row in data:
 
         expenses = {}
-        expenses['Code_product'] = row[0]
-        expenses['ID_provider'] = row[1]
-        expenses['name'] = row[2]
-        expenses['price_without_iva'] = row[3]
-        items.append(expenses)
+        expenses['id_provider'] = row[1]
+        expenses['date'] = row[2]
+        items[row[0]] = expenses
         
     return items
 
