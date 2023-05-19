@@ -85,8 +85,8 @@ CREATE TRIGGER insert_price_providers BEFORE INSERT ON details_expense FOR EACH 
 CREATE TABLE IF NOT EXISTS benefits ();
 
 INSERT INTO providers ("name",cif,direction,phone,email,contact,schedule) VALUES ('IPM a Ricoh Company', 'A1325689', 'C/Eucalipto, 33', 918453479, 'ipm@ipm.es', 'Oscar Perez', '09:00-14:00'),
-                                                                               ('IBM', 'Q0128375', 'C/Colmena, 44', 918458298, 'ibm@ibm.es', 'Javier Gutierrez', '09:00-15:00'),
-                                                                               ('Arrow Electronics', 'L2458374', 'C/Rio Duero, 44', 918432094, 'arrow@arrow.es', 'Ramon Manjon', '09:00-14:00');
+                                                                                 ('IBM', 'Q0128375', 'C/Colmena, 44', 918458298, 'ibm@ibm.es', 'Javier Gutierrez', '09:00-15:00'),
+                                                                                 ('Arrow Electronics', 'L2458374', 'C/Rio Duero, 44', 918432094, 'arrow@arrow.es', 'Ramon Manjon', '09:00-14:00');
 
 INSERT INTO clients ("name",cif,direction,phone,email,contact,schedule) VALUES ('KPMG', 'A1325689', 'C/Eucalipto, 33', 918453479, 'ipm@ipm.es', 'Oscar Perez', '09:00-14:00'),
                                                                                ('METRO', 'Q0128375', 'C/Colmena, 44', 918458298, 'ibm@ibm.es', 'Javier Gutierrez', '09:00-15:00'),
@@ -95,14 +95,14 @@ INSERT INTO clients ("name",cif,direction,phone,email,contact,schedule) VALUES (
 
 			    
 
-INSERT INTO products VALUES (123456, 1, 'PowerStore', 324.76);
-INSERT INTO products VALUES (987654, 2, 'PowerMax', 394.32);
-INSERT INTO products VALUES (135790, 3, 'DataDomain', 678.61);
+INSERT INTO products VALUES (123456, 1, 'PowerStore', 324.76),
+                            (987654, 2, 'PowerMax', 394.32),
+                            (135790, 3, 'DataDomain', 678.61);
 
-INSERT INTO details_expense (id_order, code_product, quantity) VALUES (1,123456,5);
-INSERT INTO details_expense (id_order, code_product, quantity) VALUES (1,123456,3);
-INSERT INTO details_expense (id_order, code_product, quantity) VALUES (2,987654,1);
-INSERT INTO details_expense (id_order, code_product, quantity) VALUES (2,123456,5);
+INSERT INTO details_expense (id_order, code_product, quantity) VALUES (1,123456,5),
+                                                                      (1,123456,3),
+                                                                      (2,987654,1),
+                                                                      (2,123456,5);
 
 INSERT INTO income VALUES (1,1,'2020-01-31'),
                           (2,3,'2020-01-31'),
