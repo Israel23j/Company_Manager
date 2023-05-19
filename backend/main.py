@@ -5,8 +5,6 @@ from connection.db_connect import *
 app = FastAPI()
 app.title = "Company Manager API"
 
-
-
 @app.get('/')
 def message(db=Depends(get_db)):
     
