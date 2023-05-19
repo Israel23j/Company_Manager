@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS clients (id_client SERIAL,
 CREATE TABLE  IF NOT EXISTS products (code_product INT,
 		                              id_provider INT,
                                       "name" VARCHAR(50),
-                                      price_without_IVA FLOAT,
+                                      price_without_iva FLOAT,
                                       PRIMARY KEY (code_product),
                                       CONSTRAINT fk_provider
                                       FOREIGN KEY (id_provider)
@@ -99,6 +99,9 @@ INSERT INTO products VALUES (123456, 1, 'PowerStore', 324.76),
                             (987654, 2, 'PowerMax', 394.32),
                             (135790, 3, 'DataDomain', 678.61);
 
+INSERT INTO expenses VALUES (1,1,'2020-05-23'),
+                            (2,2,'2020-01-23');
+
 INSERT INTO details_expense (id_order, code_product, quantity) VALUES (1,123456,5),
                                                                       (1,123456,3),
                                                                       (2,987654,1),
@@ -109,10 +112,10 @@ INSERT INTO income VALUES (1,1,'2020-01-31'),
                           (3,2,'2020-01-31');
 
 INSERT INTO details_income VALUES (1,123456,10,134.56),
-                                  (1,098765,3,214.56),
-                                  (1,135790,4,321.56),
+                                  (1,987654,30,214.56),
+                                  (1,135790,40,321.56),
+                                  (1,987654,60,876.56),
                                   (2,123456,10,134.56),
-                                  (1,987654,6,876.56),
                                   (3,123456,10,134.56);
 
 /*SELECT * FROM providers;
