@@ -21,14 +21,25 @@ class Connection_database():
         
         return result
     
+    def read_all_condition(self, tb_name, column_name, id):
+    
+        cur = self.conn.cursor()
+        cur.execute("""
+                    SELECT * FROM %s WHERE %s = %d
+                    """ % (tb_name,column_name,id))
+        data = cur.fetchall()
+        
+        return data
+    
     def read_one(self, tb_name, column_name, id):
         
         cur = self.conn.cursor()
         cur.execute("""
                     SELECT * FROM %s WHERE %s = %d
-                    """ % (tb_name,column_name,id))  
+                    """ % (tb_name,column_name,id))
+        data = cur.fetchone()
         
-        return cur.fetchone()
+        return data
         
     def write_customers(self, tb_name, data):
         
@@ -42,7 +53,7 @@ class Connection_database():
         
         cur = self.conn.cursor()
         cur.execute("""
-                    INSERT INTO products VALUES %s
+                    INSERT INTO products VALUES %(%s)
                     """ % (data))
         self.conn.commit()
         

@@ -1,4 +1,4 @@
-from fastapi import FastAPI,Depends
+from fastapi import FastAPI,Depends,HTTPException
 from connection import get_db
 from connection.db_connect import *
 
@@ -154,6 +154,26 @@ def get_all_expense(  db=Depends(get_db)):
         
     return items
 
+
+@app.get('/expenses/details/{id_order}', tags=["Expenses"])
+def list_id_expense(id_order:int,  db=Depends(get_db)):
+    
+    data = db.read_all_condition("details_expense","id_order",id_order)
+    
+    expenses = {}
+    details_group = []
+    
+    
+    for row in data:
+        details = {}
+        details["code_product"] = row[1]
+        details["quantity"] = row[2]
+        details["price_without_iva"] = row[3]
+        details_group.append(details)
+    expenses[data[0][0]] = details_group
+    
+    return expenses
+
 @app.get('/expenses/{id_order}', tags=["Expenses"])
 def get_only_expense(id_order:int,  db=Depends(get_db)):
     
@@ -182,17 +202,40 @@ def list_expense(  db=Depends(get_db)):
         
     return items
 
+
+
+@app.get('/income/details/{id_order}', tags=["Income"])
+def list_id_expense(id_order:int,  db=Depends(get_db)):
+    
+    data = db.read_all_condition("details_income","id_order",id_order)
+    
+    income = {}
+    details_group = []
+    
+    
+    for row in data:
+        details = {}
+        details["code_product"] = row[1]
+        details["quantity"] = row[2]
+        details["price_without_iva"] = row[3]
+        details_group.append(details)
+    income[data[0][0]] = details_group
+    
+    return income
+
 @app.get('/income/{id_order}', tags=["Income"])
 def list_id_expense(id_order:int,  db=Depends(get_db)):
-
+    
     data = db.read_one("income","id_order",id_order)
     item = {}
     order = {}
     order["ID_client"] = data[1]
     order["date"] = data[2]
     item[data[0]] = order
-
+    
     return item
+
+
 
 
 ########## INSERT ##########

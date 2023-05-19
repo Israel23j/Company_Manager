@@ -46,7 +46,8 @@ CREATE TABLE  IF NOT EXISTS details_income (id_order INT,
                                             ON UPDATE CASCADE ON DELETE CASCADE,
                                             CONSTRAINT fk_order                             
                                             FOREIGN KEY (id_order)                                
-                                            REFERENCES income(id_order));
+                                            REFERENCES income(id_order)
+                                            ON DELETE CASCADE);
 
 CREATE TABLE IF NOT EXISTS expenses (id_order INT, 
                                      id_provider INT,
@@ -66,7 +67,8 @@ CREATE TABLE  IF NOT EXISTS details_expense (id_order INT,
                                             ON UPDATE CASCADE ON DELETE CASCADE,
                                             CONSTRAINT fk_order_expense                             
                                             FOREIGN KEY (id_order)                                
-                                            REFERENCES expenses(id_order));
+                                            REFERENCES expenses(id_order)
+                                            ON DELETE CASCADE);
 
 
 CREATE FUNCTION insert_price() RETURNS TRIGGER AS $$
