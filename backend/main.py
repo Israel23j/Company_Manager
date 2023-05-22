@@ -37,7 +37,7 @@ def message_2(
     items = {}
 
     for row in data:
-
+        
         products = {}
         products['ID_provider'] = row[1]
         products['name'] = row[2]
@@ -46,11 +46,9 @@ def message_2(
         
     return items
 
-
 @app.get('/products/{code_product}', tags=["Products"])
 def message_2(code_product: int,  db=Depends(get_db)):
     
-
     data = db.read_one("products","code_product",code_product)
     
     product = {}
@@ -98,7 +96,7 @@ def get_only_provider(id_provider:int,  db=Depends(get_db)):
 
     return item
 
-@app.get('/clients', tags=["clients"])
+@app.get('/clients', tags=["Clients"])
 def get_clients(  db=Depends(get_db)):
     
     data = db.read_all("clients")
@@ -119,7 +117,7 @@ def get_clients(  db=Depends(get_db)):
         
     return items
 
-@app.get('/clients/{id_client}', tags=["clients"])
+@app.get('/clients/{id_client}', tags=["Clients"])
 def get_only_client(id_client:int, db=Depends(get_db)):
     
     data = db.read_one("clients","id_client",id_client)
@@ -151,7 +149,6 @@ def get_all_expense(  db=Depends(get_db)):
         items[row[0]] = expenses
         
     return items
-
 
 @app.get('/expenses/details/{id_order}', tags=["Expenses"])
 def list_id_expense(id_order:int,  db=Depends(get_db)):
@@ -200,8 +197,6 @@ def list_expense(  db=Depends(get_db)):
         
     return items
 
-
-
 @app.get('/income/details/{id_order}', tags=["Income"])
 def list_id_expense(id_order:int,  db=Depends(get_db)):
     
@@ -238,11 +233,37 @@ def list_id_expense(id_order:int,  db=Depends(get_db)):
 
 ########## INSERT ##########
 
-@app.post('/products/insert', tags=["Products"])
-def look_product(  db=Depends(get_db)):
-    db.write_customers("clients(name,cif,direction,phone,email,contact,schedule)","'romero company','96745673A','d',132476890,'a@a','pepe','09:00-18:00'")
+@app.post('/companies/insert', tags=["Providers","Clients"])
+def insert_companie(
+    tb_name:str, name:str,cif:str, direction:str, phone:int, email:str, contact:str, schedule:str,  db=Depends(get_db)
+):
+    db.write_customers(tb_name,name,cif,direction,phone,email,contact,schedule)
     
+    return {"message":"Insertado correctamente"}
 
-@app.post('/products/insert')
-def insert_product(  db=Depends(get_db)):
-    db.write_products()
+@app.post('/products/insert', tags=["Products"])
+def insert_product(
+    code_product:int, id_provider:int, name:str, price:float, db=Depends(get_db)
+):
+    db.write_products(code_product,id_provider,name,price)
+    
+    return {"message":"Insertado correctamente"}
+
+@app.post('/orders/new_order', tags=["Orders"])
+def insert_new_order(
+    tb_name:str, id_rol:int, date:str, db=Depends(get_db) 
+):
+    db.new_order(tb_name, id_rol, date)
+    
+    return {"message":"Insertado correctamente"}
+
+@app.post('/orders/details_orders/add_row', tags=["Orders"])
+def add_details_order(
+    tb_name:str, id_order:int, code_product:int, quantity:int, db=Depends(get_db)
+):
+    db.details_order(tb_name,id_order,code_product,quantity)
+    
+    return {"message":"Insertado correctamente"}
+            
+
+    

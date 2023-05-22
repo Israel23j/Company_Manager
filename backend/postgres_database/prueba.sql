@@ -28,7 +28,7 @@ CREATE TABLE  IF NOT EXISTS products (code_product INT,
                                       FOREIGN KEY (id_provider)
                                       REFERENCES providers(id_provider));
 
-CREATE TABLE IF NOT EXISTS income (id_order INT,
+CREATE TABLE IF NOT EXISTS income (id_order SERIAL,
                                    id_client INT, 
                                    "date" DATE, 
                                    PRIMARY KEY(id_order),
@@ -49,7 +49,7 @@ CREATE TABLE  IF NOT EXISTS details_income (id_order INT,
                                             REFERENCES income(id_order)
                                             ON DELETE CASCADE);
 
-CREATE TABLE IF NOT EXISTS expenses (id_order INT, 
+CREATE TABLE IF NOT EXISTS expenses (id_order SERIAL, 
                                      id_provider INT,
                                      "date" DATE,
                                      PRIMARY KEY(id_order),
@@ -83,6 +83,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER insert_price_providers BEFORE INSERT ON details_expense FOR EACH ROW EXECUTE FUNCTION insert_price();
+CREATE TRIGGER insert_price_clients BEFORE INSERT ON details_income FOR EACH ROW EXECUTE FUNCTION insert_price();
 
 CREATE TABLE IF NOT EXISTS benefits ();
 
@@ -101,17 +102,17 @@ INSERT INTO products VALUES (123456, 1, 'PowerStore', 324.76),
                             (987654, 2, 'PowerMax', 394.32),
                             (135790, 3, 'DataDomain', 678.61);
 
-INSERT INTO expenses VALUES (1,1,'2020-05-23'),
-                            (2,2,'2020-01-23');
+INSERT INTO expenses(id_provider,"date") VALUES (1,'2020-05-23'),
+                                                (2,'2020-01-23');
 
 INSERT INTO details_expense (id_order, code_product, quantity) VALUES (1,123456,5),
                                                                       (1,123456,3),
                                                                       (2,987654,1),
                                                                       (2,123456,5);
 
-INSERT INTO income VALUES (1,1,'2020-01-31'),
-                          (2,3,'2020-01-31'),
-                          (3,2,'2020-01-31');
+INSERT INTO income(id_client,"date") VALUES (1,'2020-01-31'),
+                                            (3,'2020-01-31'),
+                                            (2,'2020-01-31');
 
 INSERT INTO details_income VALUES (1,123456,10,134.56),
                                   (1,987654,30,214.56),
