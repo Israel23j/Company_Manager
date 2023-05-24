@@ -10,7 +10,7 @@ def message(db=Depends(get_db)):
     
     data = db.read_all("providers")
     
-    items = {}
+    items = []
 
     for row in data:
 
@@ -22,7 +22,7 @@ def message(db=Depends(get_db)):
         providers['email'] = row[5]
         providers['contact'] = row[6]
         providers['schedule'] = row[7]
-        items[row[0]] = providers
+        items.append(providers)
     
     return items
 
@@ -34,15 +34,16 @@ def message_2(
 
     data = db.read_all("products")
 
-    items = {}
-
+    items = []
+    
     for row in data:
         
         products = {}
+        products['code_product'] = row[0]
         products['ID_provider'] = row[1]
         products['name'] = row[2]
         products['price_without_iva'] = row[3]
-        items[row[0]] = products
+        items.append(products)
         
     return items
 
@@ -51,13 +52,14 @@ def message_2(code_product: int,  db=Depends(get_db)):
     
     data = db.read_one("products","code_product",code_product)
     
-    product = {}
+    product = []
     item = {}
     
+    item['code_product'] = data[0]
     item['Provider'] = data[1]
     item['Name'] = data[2]
     item['Price'] = data[3] 
-    product[data[0]] = item
+    product.append(item)
 
     return product
 
@@ -66,16 +68,20 @@ def get_providers(  db=Depends(get_db)):
     
     data = db.read_all("providers")
 
-    items = {}
+    items = []
 
     for row in data:
 
-        providers = {}
-        providers['Code_product'] = row[0]
-        providers['ID_provider'] = row[1]
-        providers['name'] = row[2]
-        providers['price_without_iva'] = row[3]
-        items[row[0]] = providers
+        provider = {}
+        provider['id_provider'] = row[0]
+        provider["name"] = row[1]
+        provider["cif"] = row[2]
+        provider["direction"] = row[3]
+        provider["phone"] = row[4]
+        provider["email"] = row[5]
+        provider["contact"] = row[6]
+        provider["schedule"] = row[7]
+        items.append(provider)
         
     return items
 
@@ -83,8 +89,11 @@ def get_providers(  db=Depends(get_db)):
 def get_only_provider(id_provider:int,  db=Depends(get_db)):
     
     data = db.read_one("providers","id_provider",id_provider)
-    item = {}
+    
+    item = []
     provider = {}
+    
+    provider['id_provider'] = data[0]
     provider["name"] = data[1]
     provider["cif"] = data[2]
     provider["direction"] = data[3]
@@ -92,7 +101,7 @@ def get_only_provider(id_provider:int,  db=Depends(get_db)):
     provider["email"] = data[5]
     provider["contact"] = data[6]
     provider["schedule"] = data[7]
-    item[data[0]] = provider
+    item.append(provider)
 
     return item
 
@@ -101,11 +110,12 @@ def get_clients(  db=Depends(get_db)):
     
     data = db.read_all("clients")
 
-    items = {}
+    items = []
 
     for row in data:
 
         clients = {}
+        clients['id_client'] = row[0]
         clients["name"] = row[1]
         clients["cif"] = row[2]
         clients["direction"] = row[3]
@@ -113,7 +123,7 @@ def get_clients(  db=Depends(get_db)):
         clients["email"] = row[5]
         clients["contact"] = row[6]
         clients["schedule"] = row[7]
-        items[row[0]] = clients
+        items.append(clients)
         
     return items
 
@@ -121,8 +131,11 @@ def get_clients(  db=Depends(get_db)):
 def get_only_client(id_client:int, db=Depends(get_db)):
     
     data = db.read_one("clients","id_client",id_client)
-    item = {}
+    
+    item = []
     client = {}
+    
+    client['id_provider'] = data[0]
     client["name"] = data[1]
     client["cif"] = data[2]
     client["direction"] = data[3]
@@ -130,7 +143,7 @@ def get_only_client(id_client:int, db=Depends(get_db)):
     client["email"] = data[5]
     client["contact"] = data[6]
     client["schedule"] = data[7]
-    item[data[0]] = client
+    item.append(client)
 
     return item
 
@@ -139,15 +152,15 @@ def get_all_expense(  db=Depends(get_db)):
     
     data = db.read_all("expenses")
 
-    items = {}
+    items = []
 
     for row in data:
 
         expenses = {}
+        expenses['id_order'] = row[0]
         expenses['id_provider'] = row[1]
         expenses['date'] = row[2]
-        items[row[0]] = expenses
-        
+        items.append(expenses)
     return items
 
 @app.get('/expenses/details/{id_order}', tags=["Expenses"])
@@ -155,29 +168,31 @@ def list_id_expense(id_order:int,  db=Depends(get_db)):
     
     data = db.read_all_condition("details_expense","id_order",id_order)
     
-    expenses = {}
-    details_group = []
+    details_expense = []
     
     
     for row in data:
         details = {}
+        details['id_order'] = row[0]
         details["code_product"] = row[1]
         details["quantity"] = row[2]
         details["price_without_iva"] = row[3]
-        details_group.append(details)
-    expenses[data[0][0]] = details_group
+        details_expense.append(details)
     
-    return expenses
+    return details_expense
 
 @app.get('/expenses/{id_order}', tags=["Expenses"])
 def get_only_expense(id_order:int,  db=Depends(get_db)):
     
     data = db.read_one("expenses","id_order",id_order)
-    item = {}
+    
+    item = []
     expense = {}
+    
+    expense['id_order'] = data[0]
     expense["ID_client"] = data[1]
     expense["date"] = data[2]
-    item[data[0]] = expense
+    item.append(expense)
 
     return item
 
@@ -186,14 +201,15 @@ def list_expense(  db=Depends(get_db)):
     
     data = db.read_all("income")
     
-    items = {}
+    items = []
 
     for row in data:
 
         income = {}
-        income['quantity'] = row[1]
+        income['id_order'] = row[0]
+        income['id_provider'] = row[1]
         income['date'] = row[2]
-        items[row[0]] = income
+        items.append(income)
         
     return items
 
@@ -202,29 +218,30 @@ def list_id_expense(id_order:int,  db=Depends(get_db)):
     
     data = db.read_all_condition("details_income","id_order",id_order)
     
-    income = {}
-    details_group = []
-    
+    details_income = []
     
     for row in data:
         details = {}
+        details['id_order'] = row[0]
         details["code_product"] = row[1]
         details["quantity"] = row[2]
         details["price_without_iva"] = row[3]
-        details_group.append(details)
-    income[data[0][0]] = details_group
+        details_income.append(details)
     
-    return income
+    return details_income
 
 @app.get('/income/{id_order}', tags=["Income"])
 def list_id_expense(id_order:int,  db=Depends(get_db)):
     
     data = db.read_one("income","id_order",id_order)
-    item = {}
+    
+    item = []
     order = {}
+    
+    order['id_order'] = data[0]
     order["ID_client"] = data[1]
     order["date"] = data[2]
-    item[data[0]] = order
+    item.append(order)
     
     return item
 
