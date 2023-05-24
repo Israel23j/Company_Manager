@@ -7,10 +7,11 @@
 </head>
 <body>
   <ul>
-    <li><a href="providers.php">Proveedores</a></li>
-    <li><a href="clients.php">Clientes</a></li>
-    <li><a href="products.php">Productos</a></li>
-    <li><a href="orders.php">Pedidos</a></li>
+    <li><a href="./providers/providers.php">Proveedores</a></li>
+    <li><a href="./clients/clients.php">Clientes</a></li>
+    <li><a href="./products/products.php">Productos</a></li>
+    <li><a href="./expenses/expenses.php">Gastos</a></li>
+    <li><a href="./income/income.php">Ingresos</a></li>
   </ul>
 </body>
 </html>
