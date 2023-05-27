@@ -18,7 +18,7 @@ class Connection_database():
         result = cur.fetchall()
         
         return result
-    
+
     def read_all_condition(self, tb_name, column_name, id):
     
         cur = self.conn.cursor()

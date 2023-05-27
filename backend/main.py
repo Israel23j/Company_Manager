@@ -40,7 +40,7 @@ def message_2(
         
         products = {}
         products['code_product'] = row[0]
-        products['ID_provider'] = row[1]
+        products['id_provider'] = row[1]
         products['name'] = row[2]
         products['price_without_iva'] = row[3]
         items.append(products)
@@ -56,9 +56,9 @@ def message_2(code_product: int,  db=Depends(get_db)):
     item = {}
     
     item['code_product'] = data[0]
-    item['Provider'] = data[1]
-    item['Name'] = data[2]
-    item['Price'] = data[3] 
+    item['id_provider'] = data[1]
+    item['name'] = data[2]
+    item['price_without_iva'] = data[3] 
     product.append(item)
 
     return product
