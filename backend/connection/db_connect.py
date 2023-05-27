@@ -19,6 +19,16 @@ class Connection_database():
         
         return result
 
+    def read_all_join(self,fields:str, tb_name_origin:str, tb_name_destiny:str, fk_origin:str, fk_destiny:str):
+
+        cur = self.conn.cursor()
+        cur.execute(
+            f"""SELECT {fields} FROM {tb_name_origin} JOIN {tb_name_destiny} ON {fk_origin} = {fk_destiny}"""
+        )
+        result = cur.fetchall()
+    
+        return result
+
     def read_all_condition(self, tb_name, column_name, id):
     
         cur = self.conn.cursor()
@@ -38,6 +48,18 @@ class Connection_database():
         data = cur.fetchone()
         
         return data
+    
+    def read_one_join(self, fields:str, tb_name_origin:str, tb_name_destiny:str, fk_origin:str, fk_destiny:str, column_name:str, id_order:int):
+        
+        cur = self.conn.cursor()
+        cur.execute(
+            f"""SELECT {fields} FROM {tb_name_origin} JOIN {tb_name_destiny} ON {fk_origin} = {fk_destiny} WHERE {column_name} = {id_order}"""
+        )
+        result = cur.fetchone()
+    
+        return result
+        
+    
     
     def total_price(self, tb_name:str, id_order:int):
         

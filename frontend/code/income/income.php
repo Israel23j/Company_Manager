@@ -11,7 +11,7 @@
 
   for ($i=0;$i<=count($data)-1;$i++){
       $string .=  "<tr><td>" . $data[$i]['id_order'] . 
-                  "</td><td>" . $data[$i]['id_provider'] . 
+                  "</td><td>" . $data[$i]['client'] . 
                   "</td><td>" . $data[$i]['date'] . 
                   "</td></tr>";
   }

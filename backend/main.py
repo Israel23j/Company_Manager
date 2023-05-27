@@ -8,31 +8,20 @@ app.title = "Company Manager API"
 @app.get('/')
 def message(db=Depends(get_db)):
     
-    data = db.read_all("providers")
-    
-    items = []
-
-    for row in data:
-
-        providers = {}
-        providers['name'] = row[1]
-        providers['cif'] = row[2]
-        providers['direction'] = row[3]
-        providers['phone'] = row[4]
-        providers['email'] = row[5]
-        providers['contact'] = row[6]
-        providers['schedule'] = row[7]
-        items.append(providers)
-    
-    return items
-
+    return {"message":"Bienvenido"}
     
 @app.get('/products', tags=["Products"])
 def message_2(
       db=Depends(get_db)
 ):
 
-    data = db.read_all("products")
+    data = db.read_all_join(
+        "products.code_product, providers.name, products.name, products.price_without_iva" ,
+        "products",
+        "providers",
+        "products.id_provider",
+        "providers.id_provider"
+        )
 
     items = []
     
@@ -40,7 +29,7 @@ def message_2(
         
         products = {}
         products['code_product'] = row[0]
-        products['id_provider'] = row[1]
+        products['provider'] = row[1]
         products['name'] = row[2]
         products['price_without_iva'] = row[3]
         items.append(products)
@@ -56,7 +45,7 @@ def message_2(code_product: int,  db=Depends(get_db)):
     item = {}
     
     item['code_product'] = data[0]
-    item['id_provider'] = data[1]
+    item['provider'] = data[1]
     item['name'] = data[2]
     item['price_without_iva'] = data[3] 
     product.append(item)
@@ -150,7 +139,13 @@ def get_only_client(id_client:int, db=Depends(get_db)):
 @app.get('/expenses', tags=["Expenses"])
 def get_all_expense(  db=Depends(get_db)):
     
-    data = db.read_all("expenses")
+    data = db.read_all_join(
+                            "expenses.id_order, providers.name, expenses.date" ,
+                            "expenses",
+                            "providers",
+                            "expenses.id_provider",
+                            "providers.id_provider"
+                            )
 
     items = []
 
@@ -158,7 +153,7 @@ def get_all_expense(  db=Depends(get_db)):
 
         expenses = {}
         expenses['id_order'] = row[0]
-        expenses['id_provider'] = row[1]
+        expenses['provider'] = row[1]
         expenses['date'] = row[2]
         items.append(expenses)
     return items
@@ -187,14 +182,21 @@ def list_id_expense(id_order:int,  db=Depends(get_db)):
 @app.get('/expenses/{id_order}', tags=["Expenses"])
 def get_only_expense(id_order:int,  db=Depends(get_db)):
     
-    data = db.read_one("expenses","id_order",id_order)
+    data = db.read_one_join("expenses.id_order, providers.name, expenses.date",
+                            "expenses",
+                            "providers",
+                            "expenses.id_provider",
+                            "providers.id_provider",
+                            "expenses.id_order",
+                            id_order
+                            )
     
     item = []
     expense = {}
     
     expense['id_order'] = data[0]
-    expense["ID_client"] = data[1]
-    expense["date"] = data[2]
+    expense['provider'] = data[1]
+    expense['date'] = data[2]
     item.append(expense)
 
     return item
@@ -202,7 +204,13 @@ def get_only_expense(id_order:int,  db=Depends(get_db)):
 @app.get('/income', tags=["Income"])
 def list_expense(  db=Depends(get_db)):
     
-    data = db.read_all("income")
+    data = db.read_all_join(
+                            "income.id_order, clients.name, income.date" ,
+                            "income",
+                            "clients",
+                            "income.id_client",
+                            "clients.id_client"
+                            )
     
     items = []
 
@@ -210,7 +218,7 @@ def list_expense(  db=Depends(get_db)):
 
         income = {}
         income['id_order'] = row[0]
-        income['id_provider'] = row[1]
+        income['client'] = row[1]
         income['date'] = row[2]
         items.append(income)
         
@@ -240,13 +248,20 @@ def list_id_expense(id_order:int,  db=Depends(get_db)):
 @app.get('/income/{id_order}', tags=["Income"])
 def list_id_expense(id_order:int,  db=Depends(get_db)):
     
-    data = db.read_one("income","id_order",id_order)
+    data = db.read_one_join("income.id_order, clients.name, income.date",
+                            "income",
+                            "clients",
+                            "income.id_client",
+                            "clients.id_client",
+                            "income.id_order",
+                            id_order
+                            )
     
     item = []
     order = {}
     
     order['id_order'] = data[0]
-    order["ID_client"] = data[1]
+    order["client"] = data[1]
     order["date"] = data[2]
     item.append(order)
     
