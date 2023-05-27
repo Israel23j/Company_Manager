@@ -38,6 +38,19 @@ class Connection_database():
         data = cur.fetchone()
         
         return data
+    
+    def total_price(self, tb_name:str, id_order:int):
+        
+        cur = self.conn.cursor()
+        cur.execute(
+            f"""SELECT SUM(price_without_iva) FROM {tb_name} WHERE id_order = {id_order}"""
+        )
+        
+        data = cur.fetchone()
+        
+        return data
+    
+    
         
     def write_customers(self, tb_name, name:str, cif:str, direction:str, phone:int, email:str, contact:str, schedule:str):
         

@@ -167,9 +167,10 @@ def get_all_expense(  db=Depends(get_db)):
 def list_id_expense(id_order:int,  db=Depends(get_db)):
     
     data = db.read_all_condition("details_expense","id_order",id_order)
+    price = db.total_price("details_expense",id_order)
     
     details_expense = []
-    
+    total_price = {}
     
     for row in data:
         details = {}
@@ -178,6 +179,8 @@ def list_id_expense(id_order:int,  db=Depends(get_db)):
         details["quantity"] = row[2]
         details["price_without_iva"] = row[3]
         details_expense.append(details)
+    total_price["total_price"] = (price[0]*1.21)
+    details_expense.append(total_price)
     
     return details_expense
 
@@ -217,8 +220,10 @@ def list_expense(  db=Depends(get_db)):
 def list_id_expense(id_order:int,  db=Depends(get_db)):
     
     data = db.read_all_condition("details_income","id_order",id_order)
+    price = db.total_price("details_income",id_order)
     
     details_income = []
+    total_price = {}
     
     for row in data:
         details = {}
@@ -227,6 +232,8 @@ def list_id_expense(id_order:int,  db=Depends(get_db)):
         details["quantity"] = row[2]
         details["price_without_iva"] = row[3]
         details_income.append(details)
+    total_price["total_price"] = (price[0]*1.21)
+    details_income.append(total_price)
     
     return details_income
 
