@@ -1,0 +1,39 @@
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .first {
+  
+      font-weight: bold;
+      font-size:x-large;
+      background-color: #d5dfde;
+    
+    
+    }
+    
+    header {
+      margin: 0;
+      padding: 40px;
+      background-color: #333
+    }
+    h1 {
+      margin: 0;
+      padding: 0;
+      color: white;
+      text-align: center;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    th, td {
+      padding: 8px;
+      width: 33.33%;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+    

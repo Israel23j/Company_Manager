@@ -14,7 +14,8 @@ ul {
   
   li {
     float: left;
-    width: 20%;
+    width: 15%;
+    
   
   }
   
@@ -29,5 +30,9 @@ ul {
   
   li a:hover {
     background-color: #111;
+  }
+
+  .company-manager {
+    width: 25%;
   }
   

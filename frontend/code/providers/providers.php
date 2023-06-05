@@ -3,7 +3,7 @@
     $url = "http://backend/providers";
     $data = json_decode(file_get_contents($url),true);
 
-    $string = " <tr>
+    $string = " <tr class='first'>
                     <td>Identificador</td>
                     <td>Nombre</td>
                     <td>CIF</td>
@@ -33,8 +33,18 @@
             </head>
             <body>
                 <header>
-                    <h1>Proveedores</h1>
+                    <ul>
+                    <li class='providers'><a href='./providers.php'>Proveedores</a></li>
+                    <li><a href='../index.php'>Company Manager</a></li>
+                    <li><a href='../clients/clients.php'>Clientes</a></li>
+                    <li><a href='../products/products.php'>Productos</a></li>
+                    <li><a href='../expenses/expenses.php'>Gastos</a></li>
+                    <li><a href='../income/income.php'>Ingresos</a></li>
+                    </ul>
                 </header>
+                <form action='./add_provider.php'>
+                    <input type='submit' value='Nuevo proveedor'>
+                </form>
                 <table>
                     $string
                 </table>

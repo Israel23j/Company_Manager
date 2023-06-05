@@ -3,7 +3,7 @@
     $url = "http://backend/income/details/$id_order";
     $data = json_decode(file_get_contents($url),true);
 
-    $string = " <tr>
+    $string = " <tr class='first'>
                     <td>Producto</td>
                     <td>Cantidad</td>
                     <td>Precion sin IVA</td>
@@ -16,16 +16,18 @@
                     "</td></tr>";
     }
 
-    echo "<!DOCTYPE html>
-    <html>
-    <head>
-    <link rel='stylesheet' type='text/css' href='styles.css'>
-    </head>
-    <body>
-    <h1>Detalles del pedido: $id_order</h1>
-    <table>
-        $string
-    </table>
-    </body>
-    </html>";
+    echo "  <!DOCTYPE html>
+            <html>
+                <head>
+                    <link rel='stylesheet' type='text/css' href='details.css'>
+                </head>
+                <body>
+                    <header>
+                        <h1>Pedido número $id_order</h1>
+                    </header>
+                    <table>
+                        $string
+                    </table>
+                </body>
+            </html>";
 ?>

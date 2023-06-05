@@ -2,19 +2,61 @@ body {
     width: 100%;
     margin: 0;
     padding: 0;
-}
+  }
+
+  .first {
+
+    font-weight: bold;
+    font-size:x-large;
+    background-color: #d5dfde;
+  
+  
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  li {
+    float: left;
+    width: 15%;
+    
+  
+  }
+  
+  li a {
+
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 30px 40px;
+    text-decoration: none;
+  }
+  
+  li a:hover {
+    background-color: #111;
+  }
+
+  .clients {
+    width: 25%;
+  }
+  
 
 header {
-  margin: 0;
-  padding: 30px;
-  background-color: #333
+    margin: 0;
+    padding: 0;
+    background-color: #333
 }
-
+  
 h1 {
-  margin: 0;
-  padding: 0;
-  color: white;
-  text-align: center;
+    margin: 0;
+    padding: 0;
+    color: white;
+    text-align: center;
 }
 
 table {

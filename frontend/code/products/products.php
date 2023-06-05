@@ -3,7 +3,7 @@
   $url = "http://backend/products";
   $data = json_decode(file_get_contents($url),true);
 
-  $string = " <tr>
+  $string = " <tr class='first'>
                   <td>Código</td>
                   <td>Nombre</td>
                   <td>Proveedor</td>
@@ -20,22 +20,24 @@
 
   echo "<!DOCTYPE html>
         <html>
-        <head>
-          <link rel='stylesheet' type='text/css' href='styles.css'>
-        </head>
-        <body>
-        <header>
-          <h1>Productos</h1>
-        </header>
-          <form id='myForm' action='details.php' method='get'>
-              <label>Detalles del pedido: </label>
-              <input type='number' name='id_order'>
-              <input type='submit' value='Acceder'>
-          </form>
-          <table>
-            $string
-          </table>
-        </body>
+          <head>
+            <link rel='stylesheet' type='text/css' href='styles.css'>
+          </head>
+          <body>
+            <header>
+              <ul>
+                <li class='products'><a href='./products.php'>Productos</a></li>
+                <li><a href='../index.php'>Company Manager</a></li>
+                <li><a href='../providers/providers.php'>Proveedores</a></li>
+                <li><a href='../clients/clients.php'>Clientes</a></li>
+                <li><a href='../expenses/expenses.php'>Gastos</a></li>
+                <li><a href='../income/income.php'>Ingresos</a></li>
+              </ul>
+            </header>
+            <table>
+              $string
+            </table>
+          </body>
         </html>";
 
 ?>

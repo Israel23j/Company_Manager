@@ -7,6 +7,7 @@
 </head>
 <body>
   <ul>
+    <li class="company-manager"><a href="./index.php">Company Manager</a></li>
     <li><a href="./providers/providers.php">Proveedores</a></li>
     <li><a href="./clients/clients.php">Clientes</a></li>
     <li><a href="./products/products.php">Productos</a></li>
