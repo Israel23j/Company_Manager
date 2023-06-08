@@ -1,4 +1,5 @@
-from fastapi import FastAPI,Depends,HTTPException
+from typing import Annotated
+from fastapi import FastAPI,Depends,HTTPException,Form
 from connection import get_db
 from connection.db_connect import *
 
@@ -274,7 +275,7 @@ def list_id_expense(id_order:int,  db=Depends(get_db)):
 
 @app.post('/companies/insert', tags=["Providers","Clients"])
 def insert_companie(
-    tb_name:str, name:str,cif:str, direction:str, phone:int, email:str, contact:str, schedule:str,  db=Depends(get_db)
+    tb_name: Annotated[str, Form()], name: Annotated[str, Form()],cif: Annotated[str, Form()], direction: Annotated[str, Form()], phone:Annotated[int, Form()], email: Annotated[str, Form()], contact: Annotated[str, Form()], schedule: Annotated[str, Form()],  db=Depends(get_db)
 ):
     db.write_customers(tb_name,name,cif,direction,phone,email,contact,schedule)
     
@@ -282,7 +283,7 @@ def insert_companie(
 
 @app.post('/products/insert', tags=["Products"])
 def insert_product(
-    code_product:int, id_provider:int, name:str, price:float, db=Depends(get_db)
+    code_product: Annotated[int, Form()], id_provider: Annotated[int, Form()], name:Annotated[str, Form()], price:Annotated[float, Form()], db=Depends(get_db)
 ):
     db.write_products(code_product,id_provider,name,price)
     
@@ -290,7 +291,7 @@ def insert_product(
 
 @app.post('/orders/new_order', tags=["Orders"])
 def insert_new_order(
-    tb_name:str, id_rol:int, date:str, db=Depends(get_db) 
+    tb_name: Annotated[str, Form()], id_rol: Annotated[int, Form()], date: Annotated[str, Form()], db=Depends(get_db) 
 ):
     db.new_order(tb_name, id_rol, date)
     
@@ -298,7 +299,7 @@ def insert_new_order(
 
 @app.post('/orders/details_orders/add_row', tags=["Orders"])
 def add_details_order(
-    tb_name:str, id_order:int, code_product:int, quantity:int, db=Depends(get_db)
+    tb_name: Annotated[str, Form()], id_order: Annotated[int, Form()], code_product: Annotated[int, Form()], quantity: Annotated[int, Form()], db=Depends(get_db)
 ):
     db.details_order(tb_name,id_order,code_product,quantity)
     
