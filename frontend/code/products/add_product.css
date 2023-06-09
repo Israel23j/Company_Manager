@@ -28,6 +28,7 @@ body {
   
   input[type="text"],
   input[type="int"],
+  input[type="number"],
   select {
     width: 100%;
     padding: 8px;

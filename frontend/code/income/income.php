@@ -19,19 +19,36 @@
   echo "<!DOCTYPE html>
         <html>
           <head>
-            <link rel='stylesheet' type='text/css' href='styles.css'>
+            <link rel='stylesheet' type='text/css' href='../styles.css'>
           </head>
           <body>
-            <header>
-              <ul>
-                <li class='income'><a href='./income.php'>Ingresos</a></li>
-                <li><a href='../index.php'>Company Manager</a></li>
-                <li><a href='../providers/providers.php'>Proveedores</a></li>
-                <li><a href='../clients/clients.php'>Clientes</a></li>
-                <li><a href='../products/products.php'>Productos</a></li>
-                <li><a href='../expenses/expenses.php'>Gastos</a></li>
-              </ul>
-            </header>
+            <ul>
+              <li class='company-manager'><a href='../index.php'>Company Manager</a></li>
+              <li class='dropdown'>
+                <a href='../providers/providers.php' class='dropbtn'>Proveedores</a>
+                <div class='dropdown-content'>
+                  <a href='../providers/providers.php'>Cartera</a>
+                  <a href='../expenses/expenses.php'>Pedidos</a>
+                  <a href='../expenses/new_order.php'>Nuevo pedido</a>
+                  <a href='../providers/add_provider.php'>Nuevo proveedor</a>
+                </div>
+              </li>
+              <li class='dropdown'>
+                <a href='../clients/clients.php' class='dropbtn'>Clientes</a>
+                <div class='dropdown-content'>
+                  <a href='../clients/clients.php'>Cartera</a>
+                  <a href='income.php'>Pedidos</a>
+                  <a href='../clients/add_client.php'>Añadir cliente</a>
+                </div>
+              </li>
+              <li class='dropdown'>
+                <a href='../products/products.php' class='dropbtn'>Productos</a>
+                <div class='dropdown-content'>
+                  <a href='../products/products.php'>Listado</a>
+                  <a href='../products/add_provider.php'>Añadir producto</a>
+                </div>
+              </li>
+            </ul>
             <form id='myForm' action='details.php' method='get'>
                 <label>Detalles del pedido: </label>
                 <input type='number' name='id_order'>

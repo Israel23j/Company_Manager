@@ -22,7 +22,7 @@
       <div class="dropdown-content">
         <a href="./clients/clients.php">Cartera</a>
         <a href="./income/income.php">Pedidos</a>
-        <a href="./clients/add_provider.php">Añadir cliente</a>
+        <a href="./clients/add_client.php">Añadir cliente</a>
       </div>
     </li>
     <li class="dropdown">

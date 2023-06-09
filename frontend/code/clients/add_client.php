@@ -3,27 +3,27 @@
     echo "  <!DOCTYPE html>
     <html>
     <head>
-        <link rel='stylesheet' type='text/css' href='add_provider.css'>
+        <link rel='stylesheet' type='text/css' href='add_client.css'>
         <link rel='stylesheet' type='text/css' href='../styles.css'>
     </head>
     <body>
         <ul>
             <li class='company-manager'><a href='../index.php'>Company Manager</a></li>
             <li class='dropdown'>
-                <a href='./providers/providers.php' class='dropbtn'>Proveedores</a>
+                <a href='../providers/providers.php' class='dropbtn'>Proveedores</a>
                 <div class='dropdown-content'>
                     <a href='providers.php'>Cartera</a>
                     <a href='../expenses/expenses.php'>Pedidos</a>
                     <a href='../expenses/new_order.php'>Nuevo pedido</a>
-                    <a href='./providers/add_provider.php'>Nuevo proveedor</a>
+                    <a href='../providers/add_provider.php'>Nuevo proveedor</a>
                 </div>
             </li>
             <li class='dropdown'>
-                <a href='../clients/clients.php' class='dropbtn'>Clientes</a>
+                <a href='clients.php' class='dropbtn'>Clientes</a>
                 <div class='dropdown-content'>
-                    <a href='../clients/clients.php'>Cartera</a>
+                    <a href='clients.php'>Cartera</a>
                     <a href='../income/income.php'>Pedidos</a>
-                    <a href='../clients/add_provider.php'>Añadir cliente</a>
+                    <a href='add_client.php'>Añadir cliente</a>
                 </div>
             </li>
             <li class='dropdown'>
@@ -34,11 +34,11 @@
                 </div>
             </li>
         </ul>
-        <h1>Nuevo proveedor</h1>
+        <h1>Nuevo cliente</h1>
         <form action='http://localhost:8080/companies/insert' method='POST'>
             <label for='type'>Tipo:</label>
             <select id='tb_name' name='tb_name'>
-                <option value='providers'>Proveedor</option>
+                <option value='clients'>Cliente</option>
             </select>
             <br><br>
             <label for='name'>Nombre:</label>
@@ -64,7 +64,6 @@
             <br><br>
             <input type='submit' value='Enviar'>
         </form>
-        
     </body>
     </html>";
 
