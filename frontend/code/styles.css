@@ -4,6 +4,32 @@ body {
     padding: 0;
   }
 
+  .company-manager {
+    width: 40%;
+  }
+  
+  .first {
+  
+    font-weight: bold;
+    font-size:x-large;
+    background-color: #d5dfde;
+  
+  
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 8px;
+    width: 12.5%;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+  
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -14,7 +40,7 @@ ul {
   
   li {
     float: left;
-    width: 15%;
+    width: 20%;
     
   
   }
@@ -29,10 +55,52 @@ ul {
   }
   
   li a:hover {
-    background-color: #111;
-  }
-
-  .company-manager {
-    width: 25%;
+    background-color: #555;
   }
   
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #8f8e8e;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .company-manager {
+    width: 40%;
+  }
+  
+  #myFormContainer {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    --z-index: 1;
+  }
+  
+  #myForm {
+    display: inline-block;
+    width: 100%;
+    margin: 30px;
+  }
+
+
+  h1 {
+    text-align: center;
+    background-color: #d5dfde;
+    margin: 0;
+    padding: 20px;
+
+  }
