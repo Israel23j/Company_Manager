@@ -10,12 +10,13 @@
         <ul>
             <li class='company-manager'><a href='../index.php'>Company Manager</a></li>
             <li class='dropdown'>
-                <a href='./providers/providers.php' class='dropbtn'>Proveedores</a>
+                <a href='../providers/providers.php' class='dropbtn'>Proveedores</a>
                 <div class='dropdown-content'>
-                    <a href='providers.php'>Cartera</a>
+                    <a href='../providers/providers.php'>Cartera</a>
                     <a href='../expenses/expenses.php'>Pedidos</a>
                     <a href='../expenses/new_order.php'>Nuevo pedido</a>
-                    <a href='./providers/add_provider.php'>Nuevo proveedor</a>
+                    <a href='../expenses/new_order_row.php'>Añadir líneas de pedido</a>
+                    <a href='../providers/add_provider.php'>Nuevo proveedor</a>
                 </div>
             </li>
             <li class='dropdown'>
@@ -23,7 +24,7 @@
                 <div class='dropdown-content'>
                     <a href='../clients/clients.php'>Cartera</a>
                     <a href='../income/income.php'>Pedidos</a>
-                    <a href='../clients/add_provider.php'>Añadir cliente</a>
+                    <a href='../clients/add_client.php'>Añadir cliente</a>
                 </div>
             </li>
             <li class='dropdown'>
@@ -46,7 +47,7 @@
             <input type='text' id='name' name='name' required>
             <br><br>
             <label for='price'>Precio sin IVA:</label>
-            <input type='number' step='0.10' id='price' name='price' required>
+            <input type='number' step='0.01' id='price' name='price' required>
             <br><br>
             <input type='submit' value='Enviar'>
         </form>

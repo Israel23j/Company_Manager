@@ -10,12 +10,13 @@
         <ul>
             <li class='company-manager'><a href='../index.php'>Company Manager</a></li>
             <li class='dropdown'>
-                <a href='./providers/providers.php' class='dropbtn'>Proveedores</a>
+                <a href='providers.php' class='dropbtn'>Proveedores</a>
                 <div class='dropdown-content'>
                     <a href='providers.php'>Cartera</a>
                     <a href='../expenses/expenses.php'>Pedidos</a>
                     <a href='../expenses/new_order.php'>Nuevo pedido</a>
-                    <a href='./providers/add_provider.php'>Nuevo proveedor</a>
+                    <a href='../expenses/new_order_row.php'>Añadir líneas de pedido</a>
+                    <a href='add_provider.php'>Nuevo proveedor</a>
                 </div>
             </li>
             <li class='dropdown'>
@@ -23,19 +24,19 @@
                 <div class='dropdown-content'>
                     <a href='../clients/clients.php'>Cartera</a>
                     <a href='../income/income.php'>Pedidos</a>
-                    <a href='../clients/add_provider.php'>Añadir cliente</a>
+                    <a href='../clients/add_client.php'>Añadir cliente</a>
                 </div>
             </li>
             <li class='dropdown'>
                 <a href='../products/products.php' class='dropbtn'>Productos</a>
                 <div class='dropdown-content'>
                     <a href='../products/products.php'>Listado</a>
-                    <a href='../products/add_provider.php'>Añadir producto</a>
+                    <a href='../products/add_product.php'>Añadir producto</a>
                 </div>
             </li>
         </ul>
         <h1>Nuevo proveedor</h1>
-        <form action='http://localhost:8080/companies/insert' method='POST'>
+        <form action='http://backend/companies/insert' method='POST'>
             <label for='type'>Tipo:</label>
             <select id='tb_name' name='tb_name'>
                 <option value='providers'>Proveedor</option>

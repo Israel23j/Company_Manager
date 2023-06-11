@@ -12,9 +12,10 @@
             <li class='dropdown'>
                 <a href='../providers/providers.php' class='dropbtn'>Proveedores</a>
                 <div class='dropdown-content'>
-                    <a href='providers.php'>Cartera</a>
+                    <a href='../providers/providers.php'>Cartera</a>
                     <a href='../expenses/expenses.php'>Pedidos</a>
                     <a href='../expenses/new_order.php'>Nuevo pedido</a>
+                    <a href='../expenses/new_order_row.php'>Añadir líneas de pedido</a>
                     <a href='../providers/add_provider.php'>Nuevo proveedor</a>
                 </div>
             </li>
@@ -30,7 +31,7 @@
                 <a href='../products/products.php' class='dropbtn'>Productos</a>
                 <div class='dropdown-content'>
                     <a href='../products/products.php'>Listado</a>
-                    <a href='../products/add_provider.php'>Añadir producto</a>
+                    <a href='../products/add_product.php'>Añadir producto</a>
                 </div>
             </li>
         </ul>

@@ -90,22 +90,19 @@ class Connection_database():
         )
         self.conn.commit()
         
-    def new_order(self,tb_name:str, id_rol:int, date:str ):
+    def new_order(self, id_provider:int, date:str ):
         
-        columns = "id_provider,date"
-        if tb_name == "income":
-            columns = "id_client,date"
         cur = self.conn.cursor()
         cur.execute(
-            f"""INSERT INTO {tb_name}({columns}) VALUES ({id_rol},'{date}')"""
+            f"""INSERT INTO expenses(id_provider,date) VALUES ({id_provider},'{date}')"""
         )
         self.conn.commit()
         
-    def details_order(self, tb_name:str, id_order:int, code_product:int, quantity:int):
+    def details_order(self, id_order:int, code_product:int, quantity:int):
         
         cur = self.conn.cursor()
         cur.execute(
-            f"""INSERT INTO {tb_name} VALUES ({id_order},{code_product},{quantity})"""
+            f"""INSERT INTO details_expense VALUES ({id_order},{code_product},{quantity})"""
         )
         self.conn.commit()
 

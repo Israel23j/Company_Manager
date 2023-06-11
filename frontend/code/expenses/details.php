@@ -16,6 +16,7 @@ for ($i=0;$i<count($data)-1;$i++){
                 "</td></tr>";
 }
 
+
 echo "<!DOCTYPE html>
       <html>
         <head>
@@ -23,13 +24,14 @@ echo "<!DOCTYPE html>
         </head>
         <body>
           <ul>
-            <li class='company-manager'><a href='./index.php'>Company Manager</a></li>
+            <li class='company-manager'><a href='../index.php'>Company Manager</a></li>
             <li class='dropdown'>
-              <a href='./providers/providers.php' class='dropbtn'>Proveedores</a>
+              <a href='../providers/providers.php' class='dropbtn'>Proveedores</a>
               <div class='dropdown-content'>
                 <a href='../providers/providers.php'>Cartera</a>
-                <a href='./expenses.php'>Pedidos</a>
-                <a href='./new_order.php'>Nuevo pedido</a>
+                <a href='expenses.php'>Pedidos</a>
+                <a href='new_order.php'>Nuevo pedido</a>
+                <a href='new_order_row.php'>Añadir líneas de pedido</a>
                 <a href='../providers/add_provider.php'>Nuevo proveedor</a>
               </div>
             </li>
@@ -38,14 +40,14 @@ echo "<!DOCTYPE html>
               <div class='dropdown-content'>
                 <a href='../clients/clients.php'>Cartera</a>
                 <a href='../income/income.php'>Pedidos</a>
-                <a href='../clients/add_provider.php'>Añadir cliente</a>
+                <a href='../clients/add_client.php'>Añadir cliente</a>
               </div>
             </li>
             <li class='dropdown'>
               <a href='../products/products.php' class='dropbtn'>Productos</a>
               <div class='dropdown-content'>
                 <a href='../products/products.php'>Listado</a>
-                <a href='../products/add_provider.php'>Añadir producto</a>
+                <a href='../products/add_product.php'>Añadir producto</a>
               </div>
             </li>
           </ul>

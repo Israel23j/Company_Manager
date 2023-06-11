@@ -291,17 +291,17 @@ def insert_product(
 
 @app.post('/orders/new_order', tags=["Orders"])
 def insert_new_order(
-    tb_name: Annotated[str, Form()], id_rol: Annotated[int, Form()], date: Annotated[str, Form()], db=Depends(get_db) 
+    id_provider: Annotated[int, Form()], date: Annotated[str, Form()], db=Depends(get_db) 
 ):
-    db.new_order(tb_name, id_rol, date)
+    db.new_order(id_provider, date)
     
     return {"message":"Insertado correctamente"}
 
 @app.post('/orders/details_orders/add_row', tags=["Orders"])
 def add_details_order(
-    tb_name: Annotated[str, Form()], id_order: Annotated[int, Form()], code_product: Annotated[int, Form()], quantity: Annotated[int, Form()], db=Depends(get_db)
+    id_order: Annotated[int, Form()], code_product: Annotated[int, Form()], quantity: Annotated[int, Form()], db=Depends(get_db)
 ):
-    db.details_order(tb_name,id_order,code_product,quantity)
+    db.details_order(id_order,code_product,quantity)
     
     return {"message":"Insertado correctamente"}
             

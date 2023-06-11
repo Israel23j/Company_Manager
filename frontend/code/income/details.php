@@ -22,13 +22,14 @@
       </head>
       <body>
         <ul>
-          <li class='company-manager'><a href='./index.php'>Company Manager</a></li>
+          <li class='company-manager'><a href='../index.php'>Company Manager</a></li>
           <li class='dropdown'>
-            <a href='./providers/providers.php' class='dropbtn'>Proveedores</a>
+            <a href='../providers/providers.php' class='dropbtn'>Proveedores</a>
             <div class='dropdown-content'>
               <a href='../providers/providers.php'>Cartera</a>
-              <a href='./expenses.php'>Pedidos</a>
-              <a href='./new_order.php'>Nuevo pedido</a>
+              <a href='../expenses/expenses.php'>Pedidos</a>
+              <a href='../expenses/new_order.php'>Nuevo pedido</a>
+              <a href='../expenses/new_order_row.php'>Añadir líneas de pedido</a>
               <a href='../providers/add_provider.php'>Nuevo proveedor</a>
             </div>
           </li>
@@ -36,7 +37,7 @@
             <a href='../clients/clients.php' class='dropbtn'>Clientes</a>
             <div class='dropdown-content'>
               <a href='../clients/clients.php'>Cartera</a>
-              <a href='../income/income.php'>Pedidos</a>
+              <a href='income.php'>Pedidos</a>
               <a href='../clients/add_client.php'>Añadir cliente</a>
             </div>
           </li>
@@ -44,7 +45,7 @@
             <a href='../products/products.php' class='dropbtn'>Productos</a>
             <div class='dropdown-content'>
               <a href='../products/products.php'>Listado</a>
-              <a href='../products/add_provider.php'>Añadir producto</a>
+              <a href='../products/add_product.php'>Añadir producto</a>
             </div>
           </li>
         </ul>
