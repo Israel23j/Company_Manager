@@ -1,24 +1,8 @@
-body {
-    width: 100%;
+html,body {
+    height: 100%;
     margin: 0;
     padding: 0;
 
-  }
-
-  .image {
-    text-align: center;
-  }
-
-  .footer {
-    padding: 5px;
-    text-align: center;
-    background-color: #333;
-    color: white;
-
-  }
-
-  .company-manager {
-    width: 40%;
   }
   
   .first {
@@ -95,6 +79,25 @@ ul {
   .company-manager {
     width: 40%;
   }
+
+  .image {
+    /*text-align: center;*/
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .footer {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+  }
   
   #myFormContainer {
     position: absolute;
@@ -118,4 +121,5 @@ ul {
     padding: 20px;
 
   }
+
 
