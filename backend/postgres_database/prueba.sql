@@ -89,37 +89,46 @@ CREATE TABLE IF NOT EXISTS benefits ();
 
 INSERT INTO providers ("name",cif,direction,phone,email,contact,schedule) VALUES ('IPM a Ricoh Company', 'A1325689', 'C/Eucalipto, 33', 918453479, 'ipm@ipm.es', 'Oscar Perez', '09:00-14:00'),
                                                                                  ('IBM', 'Q0128375', 'C/Colmena, 44', 918458298, 'ibm@ibm.es', 'Javier Gutierrez', '09:00-15:00'),
-                                                                                 ('Arrow Electronics', 'L2458374', 'C/Rio Duero, 44', 918432094, 'arrow@arrow.es', 'Ramon Manjon', '09:00-14:00');
+                                                                                 ('Arrow Electronics', 'L2458374', 'C/Rio Duero, 64', 918432094, 'arrow@arrow.es', 'Ramon Manjon', '09:00-14:00'),
+                                                                                 ('FutureSpace', 'H1094782', 'C/Piso, 21', 918413645, 'future@future.es', 'Jose Ignacio', '09:00-14:00'),
+                                                                                 ('HP', 'T1827654', 'C/Rio tajo 21', 918425467, 'hp@hp.es', 'Jose Delgado', '09:00-14:00');
 
-INSERT INTO clients ("name",cif,direction,phone,email,contact,schedule) VALUES ('KPMG', 'A1325689', 'C/Eucalipto, 33', 918453479, 'ipm@ipm.es', 'Oscar Perez', '09:00-14:00'),
-                                                                               ('METRO', 'Q0128375', 'C/Colmena, 44', 918458298, 'ibm@ibm.es', 'Javier Gutierrez', '09:00-15:00'),
-                                                                               ('Presidencia', 'L2458374', 'C/Rio Duero, 44', 918432094, 'arrow@arrow.es', 'Ramon Manjon', '09:00-14:00');			    
+INSERT INTO clients ("name",cif,direction,phone,email,contact,schedule) VALUES ('Deloitte', 'q0981563', 'C/Tormenta, 33', 918446531, 'deloitte@deloitte.es', 'Ana Maria', '09:00-14:00'),
+                                                                               ('Renfe', 'Q0128375', 'C/Rio duero, 24', 918458298, 'renfe@renfe.es', 'Javier Gutierrez', '09:00-15:00'),
+                                                                               ('Acciona', 'W1325679', 'C/Cuesta, 14', 918445690, 'Acciona@acciona.es', 'Ramon López', '09:00-14:00'),
+                                                                               ('Irium', 'K9871564', 'C/Rio Duero, 4', 918479081, 'irium@irium.es', 'Julian Alvarez', '09:00-14:00'),
+                                                                               ('Indra', 'F1928745', 'C/Extremadura, 34', 918408172, 'indra@indra.es', 'Claudia Garcia', '09:00-14:00');			    
 
 
 			    
 
 INSERT INTO products VALUES (123456, 1, 'PowerStore', 324.76),
                             (987654, 2, 'PowerMax', 394.32),
-                            (135790, 3, 'DataDomain', 678.61);
+                            (135790, 3, 'DataDomain', 678.61),
+                            (086421, 5, 'Backup-System', 678.36),
+                            (246800, 4, 'Switch', 115.78);
 
 INSERT INTO expenses(id_provider,"date") VALUES (1,'2020-05-23'),
                                                 (2,'2020-01-23');
 
 INSERT INTO details_expense (id_order, code_product, quantity) VALUES (1,123456,5),
-                                                                      (1,123456,3),
-                                                                      (2,987654,1),
+                                                                      (1,135790,3),
+                                                                      (1,246800,2),
+                                                                      (2,987654,5),
                                                                       (2,123456,5);
 
 INSERT INTO income(id_client,"date") VALUES (1,'2020-01-31'),
                                             (3,'2020-01-31'),
                                             (2,'2020-01-31');
 
-INSERT INTO details_income VALUES (1,123456,10,134.56),
-                                  (1,987654,30,214.56),
-                                  (1,135790,40,321.56),
-                                  (1,987654,60,876.56),
-                                  (2,123456,10,134.56),
-                                  (3,123456,10,134.56);
+INSERT INTO details_income VALUES (1,123456,3),
+                                  (1,987654,1),
+                                  (1,135790,3),
+                                  (1,246800,1),
+                                  (2,123456,2),
+                                  (2,086421,1),
+                                  (2,987654,2),
+                                  (3,123456,10);
 
 /*SELECT * FROM providers;
 SELECT * FROM products;
