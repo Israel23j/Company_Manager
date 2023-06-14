@@ -130,14 +130,3 @@ INSERT INTO details_income VALUES (1,123456,3),
                                   (2,987654,2),
                                   (3,123456,10);
 
-/*SELECT * FROM providers;
-SELECT * FROM products;
-SELECT * FROM details_expense;
-SELECT * FROM expenses;
-SELECT SUM(quantity) AS quantity,SUM(price_without_iva) AS total_price FROM details_expense WHERE id_order = 1;
-
-SELECT income.id_order, details_income.code_product,products.name,details_income.quantity FROM income JOIN details_income ON income.id_order = details_income.id_order 
-JOIN products ON details_income.code_product = products.code_product 
-WHERE income.id_order = 1;
-
-*/
