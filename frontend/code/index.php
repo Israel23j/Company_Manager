@@ -33,13 +33,13 @@
         <a href="./products/add_product.php">Añadir producto</a>
       </div>
     </li>
-  </ul>
-  <section class="image">
-    <img  src="logo.jpg" width="870px">
-  </section>
+    </ul>
+    <section class="image">
+      <img  src="logo.jpg" width="600px">
+    </section>
+    <footer class="footer">
+        <h4>Administración de Sistemas Informáticos en Red</h4>
+    </footer>
   </body>
-  <footer class="footer">
-    <h4>Administración de Sistemas Informáticos en Red</h4>
-  </footer>
 </html>
 
