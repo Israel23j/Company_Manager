@@ -36,7 +36,7 @@
             </li>
         </ul>
         <h1>Nuevo proveedor</h1>
-        <form action='http://backend/companies/insert' method='POST'>
+        <form action='http://localhost:8080/companies/insert' method='POST'>
             <label for='type'>Tipo:</label>
             <select id='tb_name' name='tb_name'>
                 <option value='providers'>Proveedor</option>
